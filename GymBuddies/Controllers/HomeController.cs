@@ -18,7 +18,7 @@ namespace GymBuddies.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Exercises()
         {
             return View();
         }
