@@ -7,19 +7,19 @@
 <style>
     .divider:after,
     .divider:before {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: #eee;
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #eee;
     }
+
     .h-custom {
-    height: calc(100% - 73px);
+        height: calc(100% - 73px);
     }
-    
+
     #loginImage {
-    border-radius: 8px;
-    height: 500px;
-    
+        border-radius: 8px;
+        height: 500px;
     }
 
 </style>
@@ -30,14 +30,14 @@
     </div>
 
     <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form>
+        <form id="account" method="post">
 
             <!-- Email input -->
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-outline mb-4">
                 <label class="form-label" asp-for="Input.Email"></label>
                 <input type="email" asp-for="Input.Email" class="form-control form-control-lg"
-                       placeholder="Enter a valid email address" aria-required="true"/>
+                       placeholder="Enter a valid email address" aria-required="true" />
 
             </div>
 
@@ -45,18 +45,18 @@
             <div class="form-outline mb-3">
                 <label class="form-label" asp-for="Input.Password"></label>
                 <input type="password" asp-for="Input.Password" class="form-control form-control-lg"
-                       placeholder="Enter password" aria-required="true"/>
+                       placeholder="Enter password" aria-required="true" />
             </div>
 
             <div class="d-flex justify-content-between align-items-center">
                 <!-- Checkbox -->
-                <div class="form-check mb-0">
-                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3"/>
-                    <label class="form-check-label" for="form2Example3">
-                        Remember me
+                <div class="checkbox">
+                    <label asp-for="Input.RememberMe" class="form-label">
+                        <input class="form-check-input" asp-for="Input.RememberMe" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
                     </label>
                 </div>
-                <a href="#!" class="text-body">Forgot password?</a>
+                <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
             </div>
             <!-- Validation Messages -->
             <div>
@@ -65,7 +65,7 @@
             </div>
 
             <div class="text-center text-lg-start mt-4 pt-2">
-                <button type="button" class="btn btn-primary btn-lg"
+                <button id="login-submit" type="submit" class="btn btn-primary btn-lg"
                         style="padding-left: 2.5rem; padding-right: 2.5rem;">
                     Login
                 </button>
@@ -82,5 +82,5 @@
 </div>
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial"/>
+<partial name="_ValidationScriptsPartial" />
 }
